@@ -15,13 +15,13 @@
 ## 安装Docker-Nginx 并设置端口为 38210 并将容器卷映射出来
 
 ```shell
-docker run -p 38210:80 \
+docker run -p 38999:38999 \
 --restart=always \
---name nginx-zhzt \
+--name nginx \
 --privileged=true \
--v /opt/nginx/html:/usr/share/nginx/html:ro \
--v /opt/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
--v /opt/nginx/logs:/var/log/nginx \
+-v /dmp/nginx/html:/usr/share/nginx/html:ro \
+-v /dmp/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
+-v /dmp/nginx/logs:/var/log/nginx \
 -d nginx:stable
 
 ```

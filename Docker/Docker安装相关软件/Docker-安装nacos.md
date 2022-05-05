@@ -13,12 +13,12 @@ docker pull nacos/nacos-server:v2.0.4
 ### 不需要链接数据库的版本
 
 ```shell
-docker run -d -p 38220:8848 -p 38221:9848 -p 38222:9849 \
+docker run -d -p 38310:8848 -p 38311:9848 -p 38312:9849 \
 --restart=always \
 --privileged=true \
 -e MODE=standalone \
--e JVM_XMS=500m \
--e JVM_XMX=500m \
+-e JVM_XMS=600m \
+-e JVM_XMX=600m \
 -e JVM_XMN=350m \
 --name nacos_zhzt nacos/nacos-server:v2.0.4
 ```
