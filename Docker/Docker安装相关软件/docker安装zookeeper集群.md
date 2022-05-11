@@ -58,7 +58,13 @@
 ## 使用命令行启动zookeeper(host网络模式)
 
 ```shell
-docker run -d --name=zookeeper --restart=always --net=host -v /opt/zookeeper/conf:/conf -v /opt/zookeeper/data:/data -v /opt/zookeeper/datalog:/datalog -v /opt/zookeeper/logs:/logs zookeeper:3.4.14
+docker run -d --name=zookeeper \
+--restart=always \
+--net=host \
+-v /opt/zookeeper/conf:/conf \
+-v /opt/zookeeper/data:/data \
+-v /opt/zookeeper/datalog:/datalog \
+-v /opt/zookeeper/logs:/logs zookeeper:3.4.14
 
 ```
 
