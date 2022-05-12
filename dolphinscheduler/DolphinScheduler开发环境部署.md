@@ -24,14 +24,28 @@ git clone git@github.com:apache/dolphinscheduler.git
 - 如果使用MySQL数据库，请注意修改pom.xml， 添加 `mysql-connector-java` 依赖。
 
 - 运行 
-  
+
   ```shell
   mvn -U install package -Prelease -Dmaven.test.skip=true
   ```
-  
+
   - 编译后的目录在 dolphinscheduler-dist model中target目录下 会生成 apache-*.tar.gz 压缩文件
   - tar包解压命令 tar -zxvf apache-*.tar.gz
-  - **注意：打包的时候，本地环境变量需要为 Python3 ，否则编译时会报错**
+  - **注意：打包的时候，本地环境变量需要有python 建议为python3 ，否则编译时会报错**
+    - java.io.IOException: Cannot run program "python3" 
+    - **在安装完成python进行编译的时候，需要保证python环境下有 python3.exe 这个文件，否则就会报错**
+      - java.io.IOException: Cannot run program "python3" (in directory "D:\mystudywork\dolphinscheduler\dolphinscheduler-python\pydolphinscheduler"): CreateProcess error=2, 系统找不到指定的文件。
+    - 可以将python.exe复制一份，改名为 python3.exe
+
+#### 注意：
+
+* 如果是在Windows环境下编译的源码，需要将一些 *.sh 文件、配置文件转换成 linux格式，因为在windows下编译后，回车是 /n/r 但 linux环境中 只有 /n 导致读取配置文件时无法读取或执行
+
+  ```shell
+  dos2unix 文件名
+  ```
+
+  
 
 ## 开发者须知
 
