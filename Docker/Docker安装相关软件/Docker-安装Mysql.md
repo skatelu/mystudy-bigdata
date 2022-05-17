@@ -10,6 +10,8 @@ docker pull mysql:8.0
 
 ### 创建容器卷、运行实例、设置密码、端口等
 
+* --lower_case_table_names=1 设置数据库对大小写不敏感
+
 ```shell
 docker run -d -p 3306:3306 \
 --privileged=true \
@@ -17,7 +19,7 @@ docker run -d -p 3306:3306 \
 -v /opt/mysql/data:/var/lib/mysql \
 -v /opt/mysql/conf:/etc/mysql/conf.d \
 -e MYSQL_ROOT_PASSWORD=123456 \
---name mysql mysql:8.0
+--name mysql mysql:8.0 --lower_case_table_names=1
 ```
 
 ### 创建配置文件，设置字符集
