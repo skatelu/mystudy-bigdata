@@ -1,3 +1,43 @@
+# Docker 安装单机版 zookeeper
+
+## Docker安装zookeeper
+
+### 创建相关数据卷
+
+```shell
+[root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper-standalone/data
+[root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper-standalone/conf
+[root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper-standalone/datalog
+```
+
+
+
+### 创建Docker实例
+
+```shell
+docker run -d -p 2181:2181 --name=zookeeper-standalone \
+-v /opt/zookeeper-standalone/conf:/conf \
+-v /opt/zookeeper-standalone/data:/data \
+-v /opt/zookeeper-standalone/datalog:/datalog \
+zookeeper:3.4.14
+```
+
+
+
+### 想要跟随docker一样开机运行
+
+docker update --restart=always
+
+
+
+
+
+
+
+
+
+
+
 # Docker 安装zookeeper 集群
 
 ## 注意，目前使用的Docker 的Host模式安装，后续会完善K8s安装

@@ -178,3 +178,23 @@ npm run start
 ```
 
 截止目前，前后端已成功运行起来，浏览器访问[http://localhost:8888](http://localhost:8888/)，并使用默认账户密码 **admin/dolphinscheduler123** 即可完成登录
+
+
+
+## DockerFile 文件构建Docker镜像
+
+docker build --build-arg VERSION=2.0.6-SNAPSHOT -t znzt/dolphinscheduler:20220513_01 .
+
+
+
+
+
+```shell
+docker run -it --name dolphinscheduler --privileged=true \
+-e DATABASE_HOST="192.168.66.10" -e DATABASE_PORT="3307" -e DATABASE_DATABASE="dolphinscheduler" \
+-e DATABASE_USERNAME="root" -e DATABASE_PASSWORD="123456" \
+-e ZOOKEEPER_QUORUM="192.168.66.10:38001,192.168.66.11:38001,192.168.66.12:38001" \
+-p 12345:12345 \
+znzt/dolphinscheduler:20220513_01 all
+```
+
