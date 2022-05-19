@@ -165,6 +165,10 @@ DolphinScheduler 的元数据存储在关系型数据库中，目前支持的关
 - WorkerServer：在 Intellij IDEA 中执行 `org.apache.dolphinscheduler.server.worker.WorkerServer` 中的 `main` 方法，并配置 *VM Options* `-Dlogging.config=classpath:logback-worker.xml -Ddruid.mysql.usePingMethod=false -Dspring.profiles.active=mysql`
 - ApiApplicationServer：在 Intellij IDEA 中执行 `org.apache.dolphinscheduler.api.ApiApplicationServer` 中的 `main` 方法，并配置 *VM Options* `-Dlogging.config=classpath:logback-api.xml -Dspring.profiles.active=api,mysql`。启动完成可以浏览 Open API 文档，地址为 http://localhost:12345/dolphinscheduler/doc.html
 
+____
+
+* 如果想启动AlertServer的话，在 Intellij IDEA 中执行 `org.apache.dolphinscheduler.alert.AlertServer` 中的 `main` 方法，并配置 *VM Options* `-Dlogging.config=classpath:logback-alert.xml -Ddruid.mysql.usePingMethod=false -Dspring.profiles.active=mysql`
+
 > VM Options `-Dspring.profiles.active=mysql` 中 `mysql` 表示指定的配置文件
 
 ### 启动前端
