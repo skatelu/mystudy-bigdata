@@ -51,7 +51,7 @@ docker update --restart=always
 * 此处 我是用的是 zookeeper 3.4.13 官方镜像
 
   ```shell
-  [root@localhost-test1 ~]# docker pull zookeeper:3.4.13
+  [root@localhost-test1 ~]# docker pull zookeeper:3.4.14
   ```
 
 
@@ -60,9 +60,9 @@ docker update --restart=always
 * **用于映射zookeeper 节点数据、配置信息、log日志文件**，持久化数据与配置信息
 
   ```shell
-  [root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper/data
-  [root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper/conf
-[root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper/datalog
+  [root@dolphinscheduler03 ~]# mkdir -p /opt/zookeeper/data&mkdir -p /opt/zookeeper/conf&mkdir -p /opt/zookeeper/datalog
+  [root@dolphinscheduler03 ~]# 
+  [root@dolphinscheduler03 ~]# 
   ```
   
 * 创建完成后，目录结构如下
@@ -98,6 +98,15 @@ docker update --restart=always
 ## 使用命令行启动zookeeper(host网络模式)
 
 ```shell
+<<<<<<< HEAD
+docker run -d --name=zookeeper --restart=always \
+--net=host --privileged=true \
+-v /opt/zookeeper/conf:/conf \
+-v /opt/zookeeper/data:/data \
+-v /opt/zookeeper/datalog:/datalog \
+-v /opt/zookeeper/logs:/logs \
+zookeeper:3.4.14
+=======
 docker run -d --name=zookeeper \
 --restart=always \
 --net=host \
@@ -105,6 +114,7 @@ docker run -d --name=zookeeper \
 -v /opt/zookeeper/data:/data \
 -v /opt/zookeeper/datalog:/datalog \
 -v /opt/zookeeper/logs:/logs zookeeper:3.4.14
+>>>>>>> df213cf7d143a0cba239ef1e071d77d6f099547a
 
 ```
 
@@ -152,9 +162,9 @@ autopurge.snapRetainCount=3
 autopurge.purgeInterval=0
 # Purge task interval in hours
 # Set to "0" to disable auto purge feature
-server.1=192.168.60.100:38002:38003
-server.2=192.168.60.102:38002:38003
-server.3=192.168.60.103:38002:38003
+server.1=192.168.66.10:38002:38003
+server.2=192.168.66.11:38002:38003
+server.3=192.168.66.12:38002:38003
 
 ```
 
@@ -179,7 +189,7 @@ server.3=192.168.60.103:38002:38003
 * 查看zookeeper运行情况
 
   ```shell
-  echo stat | nc 192.168.60.100
+  echo stat | nc 192.168.66.10 38001
   ```
 
   * 返回结果
