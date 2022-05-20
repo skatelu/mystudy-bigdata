@@ -98,7 +98,6 @@ docker update --restart=always
 ## 使用命令行启动zookeeper(host网络模式)
 
 ```shell
-<<<<<<< HEAD
 docker run -d --name=zookeeper --restart=always \
 --net=host --privileged=true \
 -v /opt/zookeeper/conf:/conf \
@@ -106,16 +105,6 @@ docker run -d --name=zookeeper --restart=always \
 -v /opt/zookeeper/datalog:/datalog \
 -v /opt/zookeeper/logs:/logs \
 zookeeper:3.4.14
-=======
-docker run -d --name=zookeeper \
---restart=always \
---net=host \
--v /opt/zookeeper/conf:/conf \
--v /opt/zookeeper/data:/data \
--v /opt/zookeeper/datalog:/datalog \
--v /opt/zookeeper/logs:/logs zookeeper:3.4.14
->>>>>>> df213cf7d143a0cba239ef1e071d77d6f099547a
-
 ```
 
 * 相关命令解释
@@ -189,11 +178,13 @@ server.3=192.168.66.12:38002:38003
 * 查看zookeeper运行情况
 
   ```shell
-  echo stat | nc 192.168.66.10 38001
+  echo stat | nc 192.168.66.10 38001&\
+  echo stat | nc 192.168.66.11 38001&\
+  echo stat | nc 192.168.66.12 38001
   ```
 
   * 返回结果
-
+  
   ```shell
   [root@localhost-test1 zookeeper]# docker exec -it zookeeper /bin/bash
   root@localhost-test1:/zookeeper-3.4.14# echo stat | nc 192.168.60.100

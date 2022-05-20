@@ -24,6 +24,8 @@ docker run -d -p 3306:3306 \
 
 ### 创建配置文件，设置字符集
 
+* 创建my.cnf 配置文件
+
 ```properties
 [client]
 default_character_set=utf8mb4
