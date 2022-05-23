@@ -78,3 +78,18 @@
 
 
 
+### docker -v /opt/data:/data   
+
+* 将当前宿主机的  /opt/data 文件夹挂载到 荣期内的 /data 目录下
+
+* --volumes-from
+
+  * 与某个容器的容器卷进行共享
+
+  ```shell
+  # 此处为nginx1容器 共享nginx容器创建时使用的数据卷
+  docker run --name nginx1 --volumes-from nginx -d nginx:stable
+  ```
+
+  
+

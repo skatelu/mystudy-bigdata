@@ -1,5 +1,9 @@
 [TOC]
 
+# DockerFile
+
+## 语法
+
 #### FROM（指定基础 image）
 
 构建指令，必须指定且需要在 Dockerfile 其他指令的前面。后续的指令都依赖于该指令指定的 image。FROM 指令指定的基础 image 可以是官方远程仓库中的，也可以位于本地仓库
@@ -424,5 +428,19 @@ CMD curl -f http://localhost/ || exit 1
 
 ```shell
 $ docker inspect –format ‘{{json .State.Health.Status}}’ cID
+```
+
+
+
+
+
+## 构建DockerFile镜像
+
+### 相关构建命令
+
+* --build-arg VERSION=1.3.8-SNAPSHOT 给DockerFile 的文件中的变量赋值
+
+```shell
+docker build --build-arg VERSION=1.3.8-SNAPSHOT -t apache/dolphinscheduler:1.3.8-SNAPSHOT .
 ```
 
