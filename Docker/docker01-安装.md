@@ -61,6 +61,18 @@ yum -y install iptables-services  &&  systemctl  start iptables  &&  systemctl  
 
 ### rpm包安装方式(最常用的安装方式)
 
+* docker rpm包下载地址
+
+  ```http
+  https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+  ```
+
+  ```http
+  https://mirrors.aliyun.com/docker-ce/linux/centos/7.6/x86_64/stable/Packages/
+  ```
+
+  
+
 * 下载好的rpm包进行安装
 
 * 将下载好的 rpm docker文件进行上传
