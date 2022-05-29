@@ -39,7 +39,7 @@ yum -y install iptables-services  &&  systemctl  start iptables  &&  systemctl  
 
 ```shell
 # 添加gcc 与 gcc-c++
-yum -y install gcc
+yum -y install gcc && \
 yum -y install gcc-c++
 
 # 增加docker 的依赖
@@ -218,8 +218,8 @@ docker 在 1703 的后续版本中封禁了一个功能
 * 卸载命令
 
   ```shell
-  # yum remove docker-ce-17.03.0.ce-1.el7.centos.x86_64
-  # yum remove docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch
+  # yum remove -y docker-ce-17.03.0.ce-1.el7.centos.x86_64
+  # yum remove -y docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch
   ```
 
 ### 3、查看相关命令

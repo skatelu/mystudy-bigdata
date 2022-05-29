@@ -71,8 +71,8 @@ chown -R dolphinscheduler:dolphinscheduler apache-dolphinscheduler-*-bin
 ```shell
 su dolphinscheduler
 
-ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
 chmod 600 ~/.ssh/authorized_keys
 ```
 
