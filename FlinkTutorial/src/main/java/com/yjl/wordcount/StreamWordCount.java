@@ -2,12 +2,14 @@ package com.yjl.wordcount;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 
+import java.lang.reflect.Parameter;
 import java.util.Arrays;
 
 /**
@@ -20,7 +22,15 @@ public class StreamWordCount {
         // 1、 创建执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 2、 读取文本流
-        DataStreamSource<String> lineDSS = env.socketTextStream("yjl02", 7777);
+//        DataStreamSource<String> lineDSS = env.socketTextStream("docker10", 7777);
+        // 2、从参数中提取主机名和端口号
+        // flink 提供的从当前的 配日志文件中读取参数的工具
+        ParameterTool parameter = ParameterTool.fromPropertiesFile("src\\main\\resources\\flink.properties");
+        DataStreamSource<String> lineDSS = env.socketTextStream(
+                parameter.get("flink.listener.host", "docker10"),
+                parameter.getInt("flink.listener.port", 7777));
+
+
         // 3、转换数据格式
         SingleOutputStreamOperator<Tuple2<String, Long>> wordAndOne = lineDSS.flatMap((String line, Collector<Tuple2<String, Long>> out) -> {
             Arrays.stream(line.split(" ")).forEach(word -> {

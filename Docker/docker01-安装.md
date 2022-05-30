@@ -35,6 +35,19 @@ yum -y install iptables-services  &&  systemctl  start iptables  &&  systemctl  
 
 # 安装Docker（推荐 19.03)
 
+### 安装前需要执行，添加相关依赖
+
+```shell
+# 添加gcc 与 gcc-c++
+yum -y install gcc && \
+yum -y install gcc-c++
+
+# 增加docker 的依赖
+yum install -y yum-utils
+```
+
+
+
 ## 三种安装方式
 
 ### 官方脚本安装 Script
@@ -61,17 +74,48 @@ yum -y install iptables-services  &&  systemctl  start iptables  &&  systemctl  
 
 ### rpm包安装方式(最常用的安装方式)
 
+* 查看 centos系统的核心版本
+
+  ```shell
+  [root@docker12 software]# cat /etc/redhat-release 
+  CentOS Linux release 7.6.1810 (Core)
+  ```
+
+* docker rpm包下载地址
+
+  ```http
+  https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+  ```
+
+  ```http
+  https://mirrors.aliyun.com/docker-ce/linux/centos/7.6/x86_64/stable/Packages/
+  ```
+
+* 需要下载4个安装包
+
+  ```shell
+  # 安装基础，首先需要安装 containerd.io-1.4.12-3.1.el7.x86_64.rpm，再就是 docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
+  containerd.io-1.4.12-3.1.el7.x86_64.rpm
+  docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
+  ----------------------
+  docker-ce-20.10.12-3.el7.x86_64.rpm
+  docker-ce-cli-20.10.2-3.el7.x86_64.rpm
+  ```
+
+
+
 * 下载好的rpm包进行安装
 
 * 将下载好的 rpm docker文件进行上传
 
   ```shell
   # 此处我上传到 /opt/software 目录下
-  [root@docker-10 ~]# ll /opt/software/
-  总用量 521476
-  -rw-r--r--. 1 root root  19521288 5月   4 01:45 docker-ce-17.03.0.ce-1.el7.centos.x86_64.rpm
-  -rw-r--r--. 1 root root     29108 5月   4 01:45 docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch.rpm
-  -rw-r--r--. 1 root root 514435272 5月   4 01:45 image-all.tar.gz
+  [root@docker12 software]# ll /opt/software/
+  总用量 99524
+  -rw-r--r--. 1 root root 29803084 5月  28 20:59 containerd.io-1.4.12-3.1.el7.x86_64.rpm
+  -rw-r--r--. 1 root root 27893588 5月  28 20:45 docker-ce-20.10.2-3.el7.x86_64.rpm
+  -rw-r--r--. 1 root root 34721660 5月  28 20:45 docker-ce-cli-20.10.2-3.el7.x86_64.rpm
+  -rw-r--r--. 1 root root  9486464 5月  28 21:01 docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
   
   ```
 
@@ -80,6 +124,8 @@ yum -y install iptables-services  &&  systemctl  start iptables  &&  systemctl  
   ```shell
   # 跳转到有 docker rpm包的文件夹下面
   cd /opt/software/
+  # 安装docker 前提环境
+  yum -y install containerd.io-1.4.12-3.1.el7.x86_64.rpm
   # yum 安装的时候，会优先查找当前文件夹下是否有该安装包，没有的话再去网络源上寻找安装
   yum -y install docker-ce-*
   ```
@@ -151,3 +197,39 @@ docker 在 1703 的后续版本中封禁了一个功能
 
 * 后续完善时 添加
 * 改的话只需要修改 daemon.json 文件中的内容即可
+
+
+
+## docker 卸载
+
+### 1、查找主机上关于Docker的软件包
+
+* `rpm -qa | grep docker` – – 列出包含docker字段的软件的信息
+
+  ```shell
+  # rpm -qa | grep docker – – 列出包含docker字段的软件的信息
+  [root@localhost opt]# rpm -qa | grep docker
+  docker-ce-17.03.0.ce-1.el7.centos.x86_64
+  docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch
+  ```
+
+### 2、使用`yum remove`卸载软件
+
+* 卸载命令
+
+  ```shell
+  # yum remove -y docker-ce-17.03.0.ce-1.el7.centos.x86_64
+  # yum remove -y docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch
+  ```
+
+### 3、查看相关命令
+
+* 查看docker 是否卸载
+
+  ```shell
+  rpm -qa | grep docker
+  -----
+  docker ps
+  ```
+
+  
