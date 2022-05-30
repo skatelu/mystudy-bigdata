@@ -1,6 +1,30 @@
 # Dolphinscheduler-Datax 添加StarRocks读写
 
-## 前台界面创建数据源中添加 StarRocks 选项
+## 1、背景
+
+* 因为数据中台类似于一个数据仓库，用来处理存放数据的，所以必定会接入大量数据，而数据又分为好多种数据源
+* 为了应对多元化的数据源，需要多少dolphinscheduler进行改写
+* StarRocks使我们需要的、必不可少的一种数据源，有大量的数据在StarRocks中进行处理，所以对dolphinscheduler进行个性化改造
+
+
+
+## 2、前端效果图
+
+### 2.1、数据源-添加StarRocks数据库
+
+![](../file/数据源-添加StarRocks数据库.png)
+
+
+
+### 2.2、修改Datax组件
+
+![](../file/DataX添加StarRocks数据库.png)
+
+
+
+## 3、前端修改内容
+
+### 添加数据源页面修改
 
 
 
