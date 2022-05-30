@@ -70,6 +70,7 @@ http://datax-opensource.oss-cn-hangzhou.aliyuncs.com/datax.tar.gz
   ```
 
 * 最后，datax的安装目录在
+  
   * /opt/datax
 
 ## 将DataX配置集成到 DolphinScheduler中
@@ -97,3 +98,50 @@ http://datax-opensource.oss-cn-hangzhou.aliyuncs.com/datax.tar.gz
 ## 执行
 
 * 最后在 dolphinscheduler 中配置 DataX  流程即可执行
+
+
+
+## 注意在新版本的Datax中，新添加了一个异常
+
+```java
+        if (isRecordLimit) {
+            long globalLimitedRecordSpeed = this.configuration.getInt(
+                    CoreConstant.DATAX_JOB_SETTING_SPEED_RECORD, 100000);
+
+            Long channelLimitedRecordSpeed = this.configuration.getLong(
+                    CoreConstant.DATAX_CORE_TRANSPORT_CHANNEL_SPEED_RECORD);
+            if (channelLimitedRecordSpeed == null || channelLimitedRecordSpeed <= 0) {
+                throw DataXException.asDataXException(FrameworkErrorCode.CONFIG_ERROR,
+                        "在有总tps限速条件下，单个channel的tps值不能为空，也不能为非正数");
+            }
+
+            needChannelNumberByRecord =
+                    (int) (globalLimitedRecordSpeed / channelLimitedRecordSpeed);
+            needChannelNumberByRecord =
+                    needChannelNumberByRecord > 0 ? needChannelNumberByRecord : 1;
+            LOG.info("Job set Max-Record-Speed to " + globalLimitedRecordSpeed + " records.");
+        }
+```
+
+* 所以在使用的时候，需要给 conf目录先的core.json的
+
+  ```properties
+          "transport": {
+              "channel": {
+                  "class": "com.alibaba.datax.core.transport.channel.memory.MemoryChannel",
+                  "speed": {
+                      "byte": -1, 添加默认值，不能为0 或者-1  默认 1024 * 1024
+                      "record": -1  添加默认值 不能为0 或者-1  默认 100000
+                  },
+                  "flowControlInterval": 20,
+                  "capacity": 512,
+                  "byteCapacity": 67108864
+              },
+              "exchanger": {
+                  "class": "com.alibaba.datax.core.plugin.BufferedRecordExchanger",
+                  "bufferSize": 32
+              }
+          },
+  ```
+
+  
