@@ -288,4 +288,150 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
 
 * 需求：循环复制文件到所有节点的相同目录下
 * 需求分析：
-  * 
+
+
+
+
+
+
+
+## 修改默认端口号
+
+### core-site.xml
+
+```xml
+<configuration>
+    <!-- 指定NameNode的地址 -->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://docker10:39100</value>
+    </property>
+
+    <!-- 指定hadoop数据的存储目录 -->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/opt/hadoop/hadoop-3.1.3/data</value>
+    </property>
+
+    <!-- 配置HDFS网页登录使用的静态用户为atguigu -->
+    <property>
+        <name>hadoop.http.staticuser.user</name>
+        <value>root</value>
+    </property>
+
+</configuration>
+```
+
+
+
+### yarn-site.xml
+
+```xml
+<configuration>
+
+<!-- Site specific YARN configuration properties -->
+    <!-- 指定MR走shuffle -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <!-- 指定ResourceManager的地址 配置此项后，yarn会使用默认的 port
+    	如果设置了其他的配置信息，则会覆盖此默认端口号
+	-->
+    <!--
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>docker11</value>
+    </property>
+    -->
+    <property>
+        <name>yarn.resourcemanager.address</name>
+       	<value>docker11:50056</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>docker11:50057</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>docker11:50058</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.admin.address</name>
+        <value>docker11:50059</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>docker11:50010</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.localizer.address</name>
+        <value>0.0.0.0:50060</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.webapp.address</name>
+        <value>0.0.0.0:50062</value>
+    </property>
+
+    <!-- 环境变量的继承 -->
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+    </property>
+    
+    <!-- 开启日志聚集功能 -->
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <!-- 设置日志聚集服务器地址 -->
+    <property>  
+        <name>yarn.log.server.url</name>  
+        <value>http://docker10:50020/jobhistory/logs</value>
+    </property>
+    <!-- 设置日志保留时间为7天 -->
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
+    </property>
+</configuration>
+
+```
+
+### mapred-site.xml
+
+```xml
+<configuration>
+    <!-- 指定MapReduce程序运行在Yarn上 -->
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+    <!-- 历史服务器端地址 -->
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>docker10:50030</value>
+    </property>
+
+    <!-- 历史服务器web端地址 -->
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>docker10:50040</value>
+    </property>
+
+    <property>
+       	<name>mapreduce.shuffle.port</name>
+     	<value>50061</value>
+    </property>
+</configuration>
+
+```
+
