@@ -201,6 +201,7 @@ WORKDIR /usr/share/nginx/html
 ADD <src> <dest>  
 		<src> 是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件 url;
 		<dest> 是 container 中的绝对路径
+		将宿主机目录下的文件拷贝进镜像且会自动处理URL和解压tar压缩包
 ```
 
 

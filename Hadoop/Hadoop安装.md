@@ -9,7 +9,7 @@
 
 ### 相关端口规划
 
-* NameNode 端口为 39100
+* NameNode 端口为 50000
 * Hadoop的数据存储目录
   * /opt/hadoop/data
 * 配置 HDFS 网页登录使用的静态用户
@@ -51,7 +51,7 @@
 
 * Caused by: java.lang.NoClassDefFoundError: javax/activation/DataSource
 
-
+  * 直接下载activation-1.1.1.jar到lib目录下，或者本地上传到${HADOOP_HOME}/share/hadoop/[yarn](https://so.csdn.net/so/search?q=yarn&spm=1001.2101.3001.7020)/lib目录下：
 
 ## Centos环境准备
 
@@ -297,6 +297,34 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
 
 ## 修改默认端口号
 
+### 端口规划
+
+| type          | name                                          | ip       | port  |
+| ------------- | --------------------------------------------- | -------- | ----- |
+| core-NameNode | fs.defaultFS                                  | docker10 | 38501 |
+|               |                                               |          |       |
+| hdfs-site     | dfs.namenode.http-address                     | docker10 | 38500 |
+| hdfs-site     | dfs.namenode.secondary.http-address           | docker12 | 38510 |
+| hdfs-site     | dfs.datanode.address                          | 0.0.0.0  | 38511 |
+| hdfs-site     | dfs.datanode.http.address                     | 0.0.0.0  | 38512 |
+| hdfs-site     | dfs.datanode.ipc.address                      | 0.0.0.0  | 38513 |
+|               |                                               |          |       |
+| yarn-site     | yarn.resourcemanager.webapp.address           | docker11 | 38520 |
+| yarn-site     | yarn.resourcemanager.address                  | docker11 | 38521 |
+| yarn-site     | yarn.resourcemanager.scheduler.address        | docker11 | 38522 |
+| yarn-site     | yarn.resourcemanager.resource-tracker.address | docker11 | 38523 |
+| yarn-site     | yarn.resourcemanager.admin.address            | docker11 | 38524 |
+| yarn-site     | yarn.nodemanager.localizer.address            | 0.0.0.0  | 38525 |
+| yarn-site     | yarn.nodemanager.webapp.address               | 0.0.0.0  | 38526 |
+|               |                                               |          |       |
+| yarn-site     | yarn.log.server.url                           | docker12 | 38530 |
+|               |                                               |          |       |
+| mapred-site   | mapreduce.jobhistory.webapp.address           | docker10 | 38540 |
+| mapred-site   | mapreduce.jobhistory.address                  | docker10 | 38541 |
+|               |                                               |          |       |
+| mapred-site   | mapreduce.shuffle.port                        | null     | 38551 |
+|               |                                               |          |       |
+
 ### core-site.xml
 
 ```xml
@@ -304,7 +332,7 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
     <!-- 指定NameNode的地址 -->
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://docker10:39100</value>
+        <value>hdfs://docker10:38501</value>
     </property>
 
     <!-- 指定hadoop数据的存储目录 -->
@@ -321,6 +349,46 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
 
 </configuration>
 ```
+
+
+
+### hdfs-site.xml
+
+```xml
+<configuration>
+
+    <!-- nn web端访问地址-->
+    <property>
+        <name>dfs.namenode.http-address</name>
+        <value>docker10:38500</value>
+    </property>
+    
+    <!-- 2nn web端访问地址-->
+    <property>
+        <name>dfs.namenode.secondary.http-address</name>
+        <value>docker12:38510</value>
+    </property>
+    <!-- DataNode 地址 -->
+    <property>
+    	<name>dfs.datanode.address</name>
+        <value>0.0.0.0:38511</value>
+    </property>
+    
+    <property>
+       	<name>dfs.datanode.http.address</name>
+      	<value>0.0.0.0:38512</value>
+    </property>
+
+    <property>
+    	<name>dfs.datanode.ipc.address</name>
+    	<value>0.0.0.0:38513</value>
+    </property>
+</configuration>
+```
+
+
+
+
 
 
 
@@ -347,37 +415,37 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
     -->
     <property>
         <name>yarn.resourcemanager.address</name>
-       	<value>docker11:50056</value>
+       	<value>docker11:38521</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.scheduler.address</name>
-        <value>docker11:50057</value>
+        <value>docker11:38522</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.resource-tracker.address</name>
-        <value>docker11:50058</value>
+        <value>docker11:38523</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.admin.address</name>
-        <value>docker11:50059</value>
+        <value>docker11:38524</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.webapp.address</name>
-        <value>docker11:50010</value>
+        <value>docker11:38520</value>
     </property>
 
     <property>
         <name>yarn.nodemanager.localizer.address</name>
-        <value>0.0.0.0:50060</value>
+        <value>0.0.0.0:38525</value>
     </property>
 
     <property>
         <name>yarn.nodemanager.webapp.address</name>
-        <value>0.0.0.0:50062</value>
+        <value>0.0.0.0:38526</value>
     </property>
 
     <!-- 环境变量的继承 -->
@@ -394,7 +462,7 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
     <!-- 设置日志聚集服务器地址 -->
     <property>  
         <name>yarn.log.server.url</name>  
-        <value>http://docker10:50020/jobhistory/logs</value>
+        <value>http://docker10:38530/jobhistory/logs</value>
     </property>
     <!-- 设置日志保留时间为7天 -->
     <property>
@@ -418,20 +486,37 @@ drwxr-xr-x. 9 root root 149 9月  12 2019 hadoop-3.1.3
     <!-- 历史服务器端地址 -->
     <property>
         <name>mapreduce.jobhistory.address</name>
-        <value>docker10:50030</value>
+        <value>docker10:38541</value>
     </property>
 
     <!-- 历史服务器web端地址 -->
     <property>
         <name>mapreduce.jobhistory.webapp.address</name>
-        <value>docker10:50040</value>
+        <value>docker10:38540</value>
     </property>
 
     <property>
        	<name>mapreduce.shuffle.port</name>
-     	<value>50061</value>
+     	<value>38551</value>
     </property>
 </configuration>
 
 ```
 
+
+
+### works
+
+```json
+docker10
+docker11
+docker12
+```
+
+
+
+:wq
+
+10.166.147.61   app-61
+10.166.147.62   app-62
+10.166.147.63   app-63
