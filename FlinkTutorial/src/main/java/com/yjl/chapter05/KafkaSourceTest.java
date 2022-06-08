@@ -31,7 +31,6 @@ public class KafkaSourceTest {
         KafkaSource<String> kafkaSource = builder.build();
 
         DataStreamSource<String> stringDataStreamSource = env.fromSource(kafkaSource, WatermarkStrategy.noWatermarks(), "Kafka-Source", TypeInformation.of(String.class));
-        
 
     }
 
