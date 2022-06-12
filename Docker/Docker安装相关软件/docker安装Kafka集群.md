@@ -56,14 +56,16 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
 
   ```shell
   docker run --name kafka --network host -d \
+  --restart=always --privileged=true \
   -v /etc/hosts:/etc/hosts \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \
   -e JMX_PORT=38006 \
+  -e KAFKA_PORT=38005 \
   -e KAFKA_BROKER_ID=1 \
-  -e KAFKA_ZOOKEEPER_CONNECT=192.168.60.100:38001,192.168.60.102:38001,192.168.60.103:38001 \
-  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.60.100:38005 \
+  -e KAFKA_ZOOKEEPER_CONNECT=192.168.66.10:38001,192.168.66.11:38001,192.168.66.12:38001 \
+  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.66.10:38005 \
   -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:38005 \
   wurstmeister/kafka:2.12-2.5.1
   ```
@@ -72,14 +74,16 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
 
   ```shell
   docker run --name kafka --network host -d \
+  --restart=always --privileged=true \
   -v /etc/hosts:/etc/hosts \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \
   -e JMX_PORT=38006 \
+  -e KAFKA_PORT=38005 \
   -e KAFKA_BROKER_ID=2 \
-  -e KAFKA_ZOOKEEPER_CONNECT=192.168.60.100:38001,192.168.60.102:38001,192.168.60.103:38001 \
-  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.60.102:38005 \
+  -e KAFKA_ZOOKEEPER_CONNECT=192.168.66.10:38001,192.168.66.11:38001,192.168.66.12:38001 \
+  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.66.11:38005 \
   -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:38005 \
   wurstmeister/kafka:2.12-2.5.1
   ```
@@ -88,14 +92,16 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
 
   ```shell
   docker run --name kafka --network host -d \
+  --restart=always --privileged=true \
   -v /etc/hosts:/etc/hosts \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \
   -e JMX_PORT=38006 \
+  -e KAFKA_PORT=38005 \
   -e KAFKA_BROKER_ID=3 \
-  -e KAFKA_ZOOKEEPER_CONNECT=192.168.60.100:38001,192.168.60.102:38001,192.168.60.103:38001 \
-  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.60.103:38005 \
+  -e KAFKA_ZOOKEEPER_CONNECT=192.168.66.10:38001,192.168.66.11:38001,192.168.66.12:38001 \
+  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.66.12:38005 \
   -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:38005 \
   wurstmeister/kafka:2.12-2.5.1
   ```
@@ -117,10 +123,12 @@ ea60f7d81f6d   mysql:5.7                       "docker-entrypoint.s…"   2 days
 
 * 在 /opt/kafka_cluster/config 目录下，修改 server.properties
 
+* docker10 第一台服务器
+
   ```properties
   # The id of the broker. This must be set to a unique integer for each broker. 根据自己的机器进行配置
-  broker.id=1
-  port=9092
+  broker.id=3
+  port=38010
   # Switch to enable topic deletion or not, default value is false
   #delete.topic.enable=true
   ############################# Socket Server Settings #############################
@@ -134,13 +142,13 @@ ea60f7d81f6d   mysql:5.7                       "docker-entrypoint.s…"   2 days
   # Hostname and port the broker will advertise to producers and consumers. If not set, 
   # it uses the value for "listeners" if configured.  Otherwise, it will use the value
   # returned from java.net.InetAddress.getCanonicalHostName().
-  advertised.listeners=PLAINTEXT://192.168.60.100:38005
+  advertised.listeners=PLAINTEXT://192.168.66.12:38005
   # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
   #listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
   # The number of threads handling network requests（最好设置为cpu核数+1）
-  num.network.threads=4
+  num.network.threads=2
   # The number of threads doing disk I/O（最好设置为cpu核数的2倍值）
-  num.io.threads=8
+  num.io.threads=4
   # The send buffer (SO_SNDBUF) used by the socket server
   socket.send.buffer.bytes=102400
   # The receive buffer (SO_RCVBUF) used by the socket server
@@ -149,7 +157,7 @@ ea60f7d81f6d   mysql:5.7                       "docker-entrypoint.s…"   2 days
   socket.request.max.bytes=104857600
   ############################# Log Basics #############################
   # A comma seperated list of directories under which to store log files 根据原有的配置文件的路径进行修改
-  log.dirs=/kafka/kafka-logs-dolphinscheduler01
+  log.dirs=/kafka/kafka-logs-docker12
   # The default number of log partitions per topic. More partitions allow greater
   # parallelism for consumption, but this will also result in more files across
   # the brokers.
@@ -191,7 +199,7 @@ ea60f7d81f6d   mysql:5.7                       "docker-entrypoint.s…"   2 days
   # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
   # You can also append an optional chroot string to the urls to specify the
   # root directory for all kafka znodes.
-  zookeeper.connect=192.168.60.100:38001,192.168.60.102:38001,192.168.60.103:38001
+  zookeeper.connect=192.168.66.10:38001,192.168.66.11:38001,192.168.66.12:38001
   # Timeout in ms for connecting to zookeeper
   zookeeper.connection.timeout.ms=30000
   ```

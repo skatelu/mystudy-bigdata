@@ -186,3 +186,15 @@ sudo docker build -t zhzt/efak:2.1.0 .
 docker inspect --format '{{.LogPath}}' 60f486ec7c33
 ```
 
+
+
+
+
+## 安装EAFK
+
+## 下载相关文件
+
+```http
+http://download.kafka-eagle.org/
+```
+
