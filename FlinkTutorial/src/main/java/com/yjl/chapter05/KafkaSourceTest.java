@@ -12,8 +12,6 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 public class KafkaSourceTest {
 
-    private static Object SimpleStringSchema;
-
     public static void main(String[] args) {
         // 获取执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

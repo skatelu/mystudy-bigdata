@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7eb72eb2-4717-439b-be0f-ec02b6e17d82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../FlinkTutorial/src/main/java/com/yjl/sourceTest/SourceKafkaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Kafka.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ConsumerDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ProducerDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/yjl/kafkatest/ConsumerDemo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/yjl/kafkatest/ProducerDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlinkTutorial/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkTutorial/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlinkTutorial/src/main/java/com/yjl/chapter05/KafkaSourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkTutorial/src/main/java/com/yjl/chapter05/KafkaSourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlinkTutorial/target/classes/com/yjl/chapter05/KafkaSourceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkTutorial/target/classes/com/yjl/chapter05/KafkaSourceTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2AWddZicq8KGoGFrUMKGwgNj4Vh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager" selected="Application.ConsumerDemo">
+    <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yjl.kafkatest.ConsumerDemo" />
+      <module name="Kafka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yjl.kafkatest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProducerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yjl.kafkatest.ProducerDemo" />
+      <module name="Kafka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yjl.kafkatest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ConsumerDemo" />
+        <item itemvalue="Application.ProducerDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7eb72eb2-4717-439b-be0f-ec02b6e17d82" name="Default Changelist" comment="" />
+      <created>1655129362690</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655129362690</updated>
+      <workItem from="1655129365472" duration="4530000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1059" y="454" key="FileChooserDialogImpl" timestamp="1655129860744">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="454" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655129860744" />
+    <state width="2500" height="323" key="GridCell.Tab.0.bottom" timestamp="1655134758634">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1655131210736" />
+    <state width="2500" height="323" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134758634" />
+    <state width="2500" height="323" key="GridCell.Tab.0.center" timestamp="1655134758634">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1655131210736" />
+    <state width="2500" height="323" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134758634" />
+    <state width="2500" height="323" key="GridCell.Tab.0.left" timestamp="1655134758634">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1655131210736" />
+    <state width="2500" height="323" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134758634" />
+    <state width="2500" height="323" key="GridCell.Tab.0.right" timestamp="1655134758634">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1655131210736" />
+    <state width="2500" height="323" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134758634" />
+    <state width="2500" height="488" key="GridCell.Tab.1.bottom" timestamp="1655134619309">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134619309" />
+    <state width="2500" height="488" key="GridCell.Tab.1.center" timestamp="1655134619308">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134619308" />
+    <state width="2500" height="488" key="GridCell.Tab.1.left" timestamp="1655134619308">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134619308" />
+    <state width="2500" height="488" key="GridCell.Tab.1.right" timestamp="1655134619309">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655134619309" />
+    <state x="810" y="354" key="Maven.ArtifactSearchDialog" timestamp="1655129580380">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="810" y="354" key="Maven.ArtifactSearchDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655129580380" />
+    <state x="773" y="343" key="SettingsEditor" timestamp="1655130951085">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="773" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1655130951085" />
+  </component>
+</project>
