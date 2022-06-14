@@ -54,10 +54,13 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
 
 * 服务器1
 
+  * -v /etc/localtime:/etc/localtime:ro 同步系统时间到docker容器中
+
   ```shell
   docker run --name kafka --network host -d \
   --restart=always --privileged=true \
-  -v /etc/hosts:/etc/hosts \
+  -v /etc/hosts:/etc/hosts:ro \
+  -v /etc/localtime:/etc/localtime:ro \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \
@@ -75,7 +78,8 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
   ```shell
   docker run --name kafka --network host -d \
   --restart=always --privileged=true \
-  -v /etc/hosts:/etc/hosts \
+  -v /etc/hosts:/etc/hosts:ro \
+  -v /etc/localtime:/etc/localtime:ro \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \
@@ -93,7 +97,8 @@ yunweijia%yunweijia ALL=(ALL) NOPASSWD:ALL
   ```shell
   docker run --name kafka --network host -d \
   --restart=always --privileged=true \
-  -v /etc/hosts:/etc/hosts \
+  -v /etc/hosts:/etc/hosts:ro \
+  -v /etc/localtime:/etc/localtime:ro \
   -v /opt/kafka_cluster/data:/kafka \
   -v /opt/kafka_cluster/config:/opt/kafka/config \
   -v /opt/kafka_cluster/logs:/opt/kafka/logs \

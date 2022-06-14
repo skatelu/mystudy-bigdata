@@ -87,6 +87,7 @@ ENV EFAK_ZK_ACL_SCHEMA=digest
 ENV EFAK_ZK_ACL_USERNAME=test
 ENV EFAK_ZK_ACL_PASSWORD=test123
 ENV EFAK_ZK_CLUSTER_ALIAS='cluster'
+ENV TimeZone=Asia/Shanghai    #添加时区环境变量，亚洲，上海
 
 # 1. install command/library/software
 # If install slowly, you can replcae debian's mirror with new mirror, Example:
@@ -100,6 +101,7 @@ ENV EFAK_ZK_CLUSTER_ALIAS='cluster'
 ADD system-config.properties /tmp
 ADD entrypoint.sh /usr/bin
 
+RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone   #使用软连接，并且将时区配置覆盖/etc/timezone
 #RUN apk --update add wget gettext tar bash sqlite
 RUN apt-get update && apt-get upgrade -y && apt-get install -y sqlite3 gettext dos2unix
 
