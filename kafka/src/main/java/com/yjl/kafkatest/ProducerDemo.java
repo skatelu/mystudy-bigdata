@@ -11,7 +11,7 @@ public class ProducerDemo {
     public static void main(String[] args) throws Exception{
 
         Properties props = new Properties();
-        props.put("bootstrap.servers","docker10:38005,docker11:38005,docker12:38005");
+        props.put("bootstrap.servers","10.166.147.61:38005,10.166.147.62:38005,10.166.147.63:38005");
         props.put("retries",0);
         props.put("batch.size",16384);
         props.put("linger.ms",1);
@@ -26,7 +26,7 @@ public class ProducerDemo {
         for (int i = 0; i < 1000; i++) {
             Thread.sleep(1000);
             producer.send(new ProducerRecord<>(
-                    "clicks","你好 "+i+"times"
+                    "testkafka","你好 "+i+"times"
             ));
             System.out.println(i);
         }
