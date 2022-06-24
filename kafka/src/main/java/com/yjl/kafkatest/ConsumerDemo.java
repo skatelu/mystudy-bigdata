@@ -13,15 +13,15 @@ public class ConsumerDemo {
 
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put("bootstrap.servers","10.166.147.61:38005,10.166.147.62:38005,10.166.147.63:38005");
-        props.put("group.id","connect-test1");
+        props.put("bootstrap.servers","10.166.133.7:9093");
+        props.put("group.id","dmp-3-sr-enpass");
         props.put("enable.auto.commit","false");
         props.put("auto.commit.intervals.ms","100");
         props.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer consumer = new KafkaConsumer(props);
 
-        consumer.subscribe(Arrays.asList("testkafka"));
+        consumer.subscribe(Arrays.asList("ENPASS"));
 
         while (true){
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(300L));

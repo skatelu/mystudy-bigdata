@@ -23,14 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eb72eb2-4717-439b-be0f-ec02b6e17d82" name="Default Changelist" comment="kafka 相关程序">
-      <change afterPath="$PROJECT_DIR$/.idea/kafka.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/Docker安装相关软件/docker安装Kafka集群.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/Docker安装相关软件/docker安装Kafka集群.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FlinkTutorial/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkTutorial/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ProducerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ProducerDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +71,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.test">
+  <component name="RunManager" selected="Application.ConsumerDemo">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.yjl.kafkatest.ConsumerDemo" />
       <module name="kafka" />
@@ -130,8 +124,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test" />
         <item itemvalue="Application.ConsumerDemo" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.ProducerDemo" />
       </list>
     </recent_temporary>
@@ -149,6 +143,8 @@
       <updated>1655129362690</updated>
       <workItem from="1655129365472" duration="4657000" />
       <workItem from="1655194040658" duration="3035000" />
+      <workItem from="1655276590570" duration="34000" />
+      <workItem from="1655685302421" duration="1303000" />
     </task>
     <servers />
   </component>
