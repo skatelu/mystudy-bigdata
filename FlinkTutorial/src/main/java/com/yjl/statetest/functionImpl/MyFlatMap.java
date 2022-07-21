@@ -1,7 +1,6 @@
-package com.yjl.statetest.flatmapfunctionImpl;
+package com.yjl.statetest.functionImpl;
 
 import com.yjl.chapter05.Event;
-import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;

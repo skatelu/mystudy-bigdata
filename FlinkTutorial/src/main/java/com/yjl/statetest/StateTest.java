@@ -2,7 +2,7 @@ package com.yjl.statetest;
 
 import com.yjl.chapter05.Event;
 import com.yjl.chapter05.reducetest.ClickSource;
-import com.yjl.statetest.flatmapfunctionImpl.MyFlatMap;
+import com.yjl.statetest.functionImpl.MyFlatMap;
 import org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
