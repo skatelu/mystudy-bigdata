@@ -91,15 +91,16 @@ yum install -y yum-utils
   https://mirrors.aliyun.com/docker-ce/linux/centos/7.6/x86_64/stable/Packages/
   ```
 
-* 需要下载4个安装包
+* 需要下载5个安装包
 
   ```shell
-  # 安装基础，首先需要安装 containerd.io-1.4.12-3.1.el7.x86_64.rpm，再就是 docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
-  containerd.io-1.4.12-3.1.el7.x86_64.rpm
-  docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
+  # 安装基础，首先需要安装 containerd.io-1.6.4-3.1.el7.x86_64.rpm，再就是 docker-ce-rootless-extras-20.10.9-3.el7.x86_64.rpm、docker-scan-plugin-0.9.0-3.el7.x86_64.rpm
+  containerd.io-1.6.4-3.1.el7.x86_64.rpm
+  docker-scan-plugin-0.9.0-3.el7.x86_64.rpm
+  docker-ce-rootless-extras-20.10.9-3.el7.x86_64.rpm
   ----------------------
-  docker-ce-20.10.12-3.el7.x86_64.rpm
-  docker-ce-cli-20.10.2-3.el7.x86_64.rpm
+  docker-ce-20.10.9-3.el7.x86_64.rpm
+  docker-ce-cli-20.10.9-3.el7.x86_64.rpm
   ```
 
 
@@ -112,10 +113,11 @@ yum install -y yum-utils
   # 此处我上传到 /opt/software 目录下
   [root@docker12 software]# ll /opt/software/
   总用量 99524
-  -rw-r--r--. 1 root root 29803084 5月  28 20:59 containerd.io-1.4.12-3.1.el7.x86_64.rpm
-  -rw-r--r--. 1 root root 27893588 5月  28 20:45 docker-ce-20.10.2-3.el7.x86_64.rpm
-  -rw-r--r--. 1 root root 34721660 5月  28 20:45 docker-ce-cli-20.10.2-3.el7.x86_64.rpm
-  -rw-r--r--. 1 root root  9486464 5月  28 21:01 docker-ce-rootless-extras-20.10.2-3.el7.x86_64.rpm
+  -rw-r--r-- 1 root root 34647136 7月   8 09:09 containerd.io-1.6.4-3.1.el7.x86_64.rpm
+  -rw-r--r-- 1 root root 23785744 7月   8 09:08 docker-ce-20.10.9-3.el7.x86_64.rpm
+  -rw-r--r-- 1 root root 30801216 7月   8 09:10 docker-ce-cli-20.10.9-3.el7.x86_64.rpm
+  -rw-r--r-- 1 root root  8427040 7月   8 09:05 docker-ce-rootless-extras-20.10.9-3.el7.x86_64.rpm
+  -rw-r--r-- 1 root root  3927120 7月   8 10:35 docker-scan-plugin-0.9.0-3.el7.x86_64.rpm
   
   ```
 
@@ -125,7 +127,8 @@ yum install -y yum-utils
   # 跳转到有 docker rpm包的文件夹下面
   cd /opt/software/
   # 安装docker 前提环境
-  yum -y install containerd.io-1.4.12-3.1.el7.x86_64.rpm
+  yum -y install containerd.io-1.6.4-3.1.el7.x86_64.rpm
+  yum -y install docker-scan-plugin-0.9.0-3.el7.x86_64.rpm
   # yum 安装的时候，会优先查找当前文件夹下是否有该安装包，没有的话再去网络源上寻找安装
   yum -y install docker-ce-*
   ```
@@ -191,7 +194,57 @@ docker 在 1703 的后续版本中封禁了一个功能
   systemctl restart docker
   ```
 
-  
+
+
+
+## 修改Docker文件存储地址
+
+### 默认存储地址
+
+* docker 默认的数据目录是/var/lib/docker，比如要修改到/data/docker/docker_data
+
+### 两种方式
+
+#### 1、创建软连接
+
+* 将 /var/lib/docker 文件移动到 /data/
+
+* 创建软连接
+
+  ```shell
+  ln -s 源文件  目标文件
+  ln -s /data/docker /var/lib/docker
+  ```
+
+* 即 docker 存储地址还是  /var/lib/docker  只不过 /var/lib/docker 只是个镜像文件，通过软连接存储在别的地方
+
+#### 2、修改docker的配置文件
+
+* 转移数据
+
+  ```shell
+  mv /var/lib/docker /data
+  ```
+
+* 修改启动配置文件
+
+  ```shell
+  vim /lib/systemd/system/docker.service
+  #修改下行后面加上 --graph /data/docker
+  ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --graph /data/docker
+  ```
+
+
+
+#### 重新启动 docker
+
+```shell
+systemctl restart docker
+```
+
+
+
+
 
 ### 设置阿里云的docker镜像加速器
 
