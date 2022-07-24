@@ -25,6 +25,7 @@
     <list default="true" id="7eb72eb2-4717-439b-be0f-ec02b6e17d82" name="Default Changelist" comment="kafka 相关程序">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yjl/kafkatest/ConsumerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yjl/kafkatest/ConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yjl/kafkatest/ConsumerDemo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,17 +112,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ConsumerDemo" />
@@ -145,6 +135,8 @@
       <workItem from="1655194040658" duration="3035000" />
       <workItem from="1655276590570" duration="34000" />
       <workItem from="1655685302421" duration="1303000" />
+      <workItem from="1657163049555" duration="698000" />
+      <workItem from="1657244975752" duration="82000" />
     </task>
     <servers />
   </component>

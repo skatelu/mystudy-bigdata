@@ -2,7 +2,7 @@ package com.yjl.statetest;
 
 import com.yjl.chapter05.Event;
 import com.yjl.chapter05.reducetest.ClickSource;
-import com.yjl.statetest.flatmapfunctionImpl.PeriodicPvResult;
+import com.yjl.statetest.functionImpl.PeriodicPvResult;
 import org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
